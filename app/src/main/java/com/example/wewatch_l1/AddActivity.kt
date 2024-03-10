@@ -62,4 +62,8 @@ class AddActivity : AppCompatActivity() {
 
         }
     }
+
+    companion object {
+        const val SEARCH_ACTIVITY_REQUEST_CODE = 2
+    }
 }
