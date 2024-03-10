@@ -9,6 +9,8 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
+import com.example.wewatch_l1.model.Movie
+import com.example.wewatch_l1.model.MyDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,6 +23,7 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_movie)
 
+        val dataBase = MyDatabase.getDb(this)
         titleEditText = findViewById(R.id.movie_title)
         val searchBtn = findViewById<ImageButton>(R.id.search_button)
         val addBtn = findViewById<Button>(R.id.add_button)
@@ -39,6 +42,7 @@ class AddActivity : AppCompatActivity() {
                 val title = titleEditText.text.toString()
                 val intent = Intent(this@AddActivity, SearchActivity::class.java)
                 intent.putExtra(SearchActivity.SEARCH_QUERY, title)
+                //startActivity(intent)
                 startActivityForResult(intent, SEARCH_ACTIVITY_REQUEST_CODE)
             }
         }
@@ -55,6 +59,8 @@ class AddActivity : AppCompatActivity() {
             else {
                 if (movieImageView.tag == null) movieImageView.tag = ""
                 CoroutineScope(Dispatchers.IO).launch {
+                    val movie = Movie(null, titleEditText.text.toString(), releaseDateEditText.text.toString(), movieImageView.tag.toString())
+                    dataBase.getDao().insert(movie)
                 }
                 setResult(Activity.RESULT_OK)
                 finish()
