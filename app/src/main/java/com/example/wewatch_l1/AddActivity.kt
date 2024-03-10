@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -11,6 +12,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.example.wewatch_l1.model.Movie
 import com.example.wewatch_l1.model.MyDatabase
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -42,7 +44,6 @@ class AddActivity : AppCompatActivity() {
                 val title = titleEditText.text.toString()
                 val intent = Intent(this@AddActivity, SearchActivity::class.java)
                 intent.putExtra(SearchActivity.SEARCH_QUERY, title)
-                //startActivity(intent)
                 startActivityForResult(intent, SEARCH_ACTIVITY_REQUEST_CODE)
             }
         }
@@ -65,6 +66,19 @@ class AddActivity : AppCompatActivity() {
                 setResult(Activity.RESULT_OK)
                 finish()
             }
+
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        this@AddActivity.runOnUiThread {
+            titleEditText.setText(data?.getStringExtra(SearchActivity.EXTRA_TITLE))
+            releaseDateEditText.setText(data?.getStringExtra(SearchActivity.EXTRA_RELEASE_DATE))
+            movieImageView.tag = data?.getStringExtra(SearchActivity.EXTRA_POSTER_PATH) ?: ""
+            if (movieImageView.tag !== "") Picasso.get().load(data?.getStringExtra(SearchActivity.EXTRA_POSTER_PATH)).into(movieImageView)
+            Log.d("AddActivity", movieImageView.tag.toString())
 
         }
     }
