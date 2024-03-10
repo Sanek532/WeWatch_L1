@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WeWatch_L1</string>
+    <string name="fab_text">Floating Action button</string>
+    <string name="no_movies_text">No movies found</string>
+    <string name="image_text">ImageView</string>
+    <string name="search_image">Search button</string>
 </resources>
