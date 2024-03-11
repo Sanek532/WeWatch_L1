@@ -1,19 +1,18 @@
-package com.example.wewatch_l1
+package com.example.wewatch_l1.search
 
-import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wewatch_l1.R
 import com.example.wewatch_l1.api.ClientApi
 import com.example.wewatch_l1.model.Item
-import com.sample.watch.SearchAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,6 +20,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 private const val TAG = "SearchActivity"
+
 class SearchActivity : AppCompatActivity() {
     private lateinit var list: List<Item>
     private lateinit var recyclerView: RecyclerView
@@ -52,8 +52,8 @@ class SearchActivity : AppCompatActivity() {
             val response = clientApi.fetchResponse("53243e84",query)
             runOnUiThread {
                 list = response.items?: emptyList()
-                adapter = SearchAdapter(list,itemListener, this@SearchActivity)
-                recyclerView.adapter = adapter //SearchAdapter(list, itemListener, this@SearchActivity)
+                adapter = SearchAdapter(list, itemListener, this@SearchActivity)
+                recyclerView.adapter = adapter
                 progressBar.visibility = View.INVISIBLE
             }
             Log.d(TAG, "Response received: $response")
@@ -70,7 +70,7 @@ class SearchActivity : AppCompatActivity() {
             replyIntent.putExtra(EXTRA_TITLE, movie.title)
             replyIntent.putExtra(EXTRA_RELEASE_DATE, movie.getReleaseYearFromDate().toString())
             replyIntent.putExtra(EXTRA_POSTER_PATH, movie.posterPath)
-            setResult(Activity.RESULT_OK, replyIntent)
+            setResult(RESULT_OK, replyIntent)
 
             finish()
 

@@ -1,4 +1,4 @@
-package com.example.wewatch_l1
+package com.example.wewatch_l1.add
 
 import android.app.Activity
 import android.content.Intent
@@ -10,8 +10,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
+import com.example.wewatch_l1.R
 import com.example.wewatch_l1.model.Movie
 import com.example.wewatch_l1.model.MyDatabase
+import com.example.wewatch_l1.search.SearchActivity
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

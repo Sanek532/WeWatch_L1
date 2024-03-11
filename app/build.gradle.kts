@@ -55,6 +55,7 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-rxjava2:2.4.3")
     // Add Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version")
@@ -68,6 +69,10 @@ dependencies {
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshi_version")
     //Picasso
     implementation("com.squareup.picasso:picasso:2.71828")
+
+    //RxJava2
+    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
+    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
 
 
 
