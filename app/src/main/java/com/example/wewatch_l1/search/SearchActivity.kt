@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wewatch_l1.R
-import com.example.wewatch_l1.api.ClientApi
+import com.example.wewatch_l1.api.RetrofitInterface
 import com.example.wewatch_l1.model.Item
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,18 +46,18 @@ class SearchActivity : AppCompatActivity() {
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
-        val clientApi: ClientApi = retrofit.create<ClientApi>(ClientApi::class.java)
+        val clientApi: RetrofitInterface = retrofit.create<RetrofitInterface>(RetrofitInterface::class.java)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = clientApi.fetchResponse("53243e84",query)
-            runOnUiThread {
-                list = response.items?: emptyList()
-                adapter = SearchAdapter(list, itemListener, this@SearchActivity)
-                recyclerView.adapter = adapter
-                progressBar.visibility = View.INVISIBLE
-            }
-            Log.d(TAG, "Response received: $response")
-        }
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val response = clientApi.fetchResponse("53243e84",query)
+//            runOnUiThread {
+//                list = response.items?: emptyList()
+//                adapter = SearchAdapter(list, itemListener, this@SearchActivity)
+//                recyclerView.adapter = adapter
+//                progressBar.visibility = View.INVISIBLE
+//            }
+//            Log.d(TAG, "Response received: $response")
+//        }
     }
 
 

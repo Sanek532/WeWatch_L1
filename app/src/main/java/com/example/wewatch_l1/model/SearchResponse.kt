@@ -1,10 +1,24 @@
 package com.example.wewatch_l1.model
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
-@JsonClass(generateAdapter = true)
-data class SearchResponse(
-    @Json(name = "Search")
-    val items: List<Item>?,
-)
+
+class SearchResponse {
+    @SerializedName("totalResults")
+    @Expose
+    var totalResults: Int? = null
+
+    /*
+    @SerializedName("total_pages")
+    @Expose
+    var totalPages: Int? = null
+    */
+    @SerializedName("Response")
+    @Expose
+    var response: Boolean? = false
+
+    @SerializedName("Search")
+    @Expose
+    var results: List<Movie>? = null
+}
