@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import io.reactivex.Observable
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -12,8 +13,8 @@ interface Dao {
     fun insert(movie: Movie)
 
     @Query("SELECT * FROM movies")
-    fun getAll(): Flow<List<Movie>>
+    fun getAll(): Observable<List<Movie>>
 
     @Delete
-    suspend fun delete(movie: Movie)
+    fun delete(movie: Movie)
 }

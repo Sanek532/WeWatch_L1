@@ -54,6 +54,7 @@ dependencies {
     // Add Room&Database
     implementation("androidx.room:room-runtime:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
+    implementation("androidx.room:room-rxjava2:2.4.3")
     kapt("androidx.room:room-compiler:$room_version")
     // Add Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version")
@@ -63,11 +64,17 @@ dependencies {
     //implementation("com.squareup.retrofit2:converter-scalars:$retrofit_version")
     implementation("com.squareup.retrofit2:converter-moshi:$retrofit_version")
     implementation("com.squareup.okhttp3:okhttp:$okhttp_version")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     // Add Moshi
     implementation("com.squareup.moshi:moshi:$moshi_version")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshi_version")
     //Picasso
     implementation("com.squareup.picasso:picasso:2.71828")
+
+    //RxJava2
+    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
+    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
 
 
 
